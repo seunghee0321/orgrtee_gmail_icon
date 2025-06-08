@@ -14,19 +14,13 @@
     "storage",
     "windows",
     "tabs",
-    "activeTab",
-    "scripting",
-    "webRequest",
-    "webRequestBlocking",
-    "https://cloudofficeorgtree.azurewebsites.net/",
-    "runtime"
+    "identity"
   ],
   "host_permissions": [
-    "*://mail.google.com/*",
+    "https://*.google.com/*",
     "https://mail.google.com/*",
-    "http://localhost:2734/rest/*",
     "http://localhost:8090/*",
-    "https://cloudofficeorgtree.azurewebsites.net/"
+    "*://mail.google.com/*"
   ],
   "background": {
     "service_worker": "src/background.js"
@@ -44,19 +38,16 @@
     }
   ],
   "action": {
-    "default_popup": "src/popup/popup.html",
     "default_icon": "icons/icon_48.png"
   },
   "web_accessible_resources": [
     {
-      "resources": ["icons/icon_ex.svg", "src/popup/popup.html"],
-      "matches": ["*://mail.google.com/*"]
+      "resources": ["icons/icon_ex.svg"],
+      "matches": ["https://mail.google.com/*"]
     }
   ],
-  "externally_connectable": {
-    "matches": ["https://cloudofficeorgtree.azurewebsites.net/*", "http://localhost:8090/*"]
-  },
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
+    "extension_pages": "script-src 'self'; object-src 'self'; frame-src http://localhost:8090/"
   }
 }
+
